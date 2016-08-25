@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CILists</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let list of lists">
+    <ion-list-header>{{list.title}}</ion-list-header>
+    <ion-item *ngFor="let item of list.items">
+      <ion-label>{{item.title}}</ion-label>
+      <ion-checkbox></ion-checkbox>
+      <div class="item-note" item-right>
+        {{item.note}}
+      </div>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+  <button fab secondary fab-bottom fab-right>
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-content>
