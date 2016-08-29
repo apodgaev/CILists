@@ -35,3 +35,10 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+# and more ionic stuff and other
+www/build/
+platforms/
+plugins/
+*.swp
+.DS_Store
+Thumbs.db
