@@ -10,7 +10,7 @@ import { StartPage } from './pages/start/start';
 @Component({
   templateUrl: 'build/app.html'
 })
-class MyApp {
+export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = StartPage;
