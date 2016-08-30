@@ -1,4 +1,4 @@
-//import { join } from 'path';
+import { join } from 'path';
 
 const config: any = {
   gulp: require('gulp'),
