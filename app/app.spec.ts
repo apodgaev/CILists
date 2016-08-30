@@ -14,14 +14,22 @@ class MockClass {
       resolve();
     });
   }
+
+  public close(): any {
+    return true;
+  }
+
+  public setRoot(): any {
+    return true;
+  }
 }
 
-let myApp = null;
+let myApp: MyApp = null;
 
 describe('MyApp', () => {
 
-  beforeEach(function() {
-    let platform = (<any>new MockClass());
+  beforeEach(() => {
+    let platform: any = (<any>new MockClass());
     myApp = new MyApp(platform);
   });
 

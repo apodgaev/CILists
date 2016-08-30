@@ -1,35 +1,34 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Type } from '@angular/core';
 import { ionicBootstrap, Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { Page1 } from './pages/page1/page1';
-import { Page2 } from './pages/page2/page2';
 import { StartPage } from './pages/start/start';
 
-
 @Component({
-  templateUrl: 'build/app.html'
+  templateUrl: 'build/app.html',
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
+  @ViewChild(Nav) private nav: Nav;
 
-  rootPage: any = StartPage;
+  private rootPage: Type;
+  private pages: Array<{title: string, component: Type}>;
+  private platform: Platform;
 
-  pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform) {
+  constructor(platform: Platform) {
+    this.platform = platform;
+    this.rootPage = StartPage;
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'CILists', component: StartPage},
       { title: 'Page uno', component: Page1 },
-      { title: 'Page dos', component: Page2 }
     ];
 
   }
 
-  initializeApp() {
+  private initializeApp(): void {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -37,7 +36,7 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+  public openPage(page: any): void {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
